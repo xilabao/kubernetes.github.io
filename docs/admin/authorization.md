@@ -259,7 +259,7 @@ rules:
   - apiGroups: [""] # The API group "" indicates the core API Group.
     resources: ["pods"]
     verbs: ["get", "watch", "list"]
-    nonResourceURLs: []
+    nonResourceURLs: [] # namespaced rules cannot apply to non-resource URLs
 ```
 
 `ClusterRoles` hold the same information as a `Role` but can apply to any
