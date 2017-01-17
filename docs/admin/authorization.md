@@ -251,15 +251,15 @@ Here's an example of a role which grants read access to pods within the
 
 ```yaml
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8.io/v1alpha1
 metadata:
   namespace: default
   name: pod-reader
 rules:
   - apiGroups: [""] # The API group "" indicates the core API Group.
     resources: ["pods"]
-    verbs: ["get", "watch", "list"]
-    nonResourceURLs: []
+    verbs: ["get", "watch", "list"]
+    nonResourceURLs: [] # Namespaced rules cannot apply to non-resource URLs
 ```
 
 `ClusterRoles` hold the same information as a `Role` but can apply to any
@@ -277,7 +277,7 @@ rules:
   - apiGroups: [""]
     resources: ["secrets"]
     verbs: ["get", "watch", "list"]
-    nonResourceURLs: []
+    nonResourceURLs: []
 ```
 
 `RoleBindings` perform the task of granting the permission to a user or set of
